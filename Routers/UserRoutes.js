@@ -109,7 +109,7 @@ transporter.sendMail(mailOptions, function(error, info){
 }
 })
 
-router.post('/otp-confirm',async(req,res)=>{
+router.post("/otp-confirm",async(req,res)=>{
   try {
     const ranstring=await getRandomString(req.body.random_string);
 if(ranstring?.random_string==req.body?.random_string){
@@ -123,7 +123,7 @@ if(ranstring?.random_string==req.body?.random_string){
   }
 })
 
-router.put('/change-password',async(req,res)=>{
+router.put("/change-password",async(req,res)=>{
   try {
     let {token,pass}=req.body;
     const salt=await bcrypt.genSalt(10);
