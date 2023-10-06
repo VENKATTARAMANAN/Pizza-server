@@ -17,10 +17,7 @@ const router = express.Router();
 import { config } from "dotenv";
 config();
 
-const instance = new Razorpay({
-  key_id: process.env.KEY_ID,
-  key_secret: process.env.KEY_SECRET,
-});
+
 
 router.get("/all", async (req, res) => {
   try {
@@ -47,6 +44,10 @@ router.get("/:databyid", async (req, res) => {
 });
 
 router.post("/orders", async (req, res) => {
+  const instance = new Razorpay({
+    key_id: process.env.KEY_ID,
+    key_secret: process.env.KEY_SECRET,
+  });
   try {
     const options = {
       amount: req.body.amount*100,
