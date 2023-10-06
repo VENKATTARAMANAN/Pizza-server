@@ -13,6 +13,9 @@ import {
 import bcrypt from "bcrypt";
 import Randomstring from "randomstring";
 import nodemailer from "nodemailer"
+import dotenv from "dotenv"
+
+dotenv.config();
 
 const router = express.Router();
 
