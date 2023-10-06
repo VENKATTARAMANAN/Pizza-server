@@ -3,7 +3,7 @@ dotenv.config();
 import { MongoClient } from "mongodb";
 import obj from "mongodb"
 
-const MongoURL=MONGO_CONNECT_URL;
+const MongoURL=process.env.MONGO_CONNECT_URL;
 
 async function createConnection(){
     const client = new MongoClient(MongoURL)
