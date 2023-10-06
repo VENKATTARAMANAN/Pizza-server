@@ -268,7 +268,7 @@ export function generateJwtToken(id) {
 }
 
 export function decodeJwtToken(token) {
-  return Jwt.decode(token,`${process.env.SECRETKEY}`);
+  return Jwt.decode(token);
 }
 
 // get pizzabyid in cart collection
