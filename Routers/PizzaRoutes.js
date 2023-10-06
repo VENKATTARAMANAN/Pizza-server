@@ -14,7 +14,7 @@ import {
 import crypto from "crypto";
 import Razorpay from "razorpay";
 const router = express.Router();
-import dotenv from "dotenv"
+import * as dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -44,8 +44,8 @@ router.get("/:databyid", async (req, res) => {
 
 router.post("/orders", async (req, res) => {
   const instance = new Razorpay({
-    key_id: process.env.KEY_ID,
-    key_secret: process.env.KEY_SECRET,
+    key_id:` ${process.env.KEY_ID}`,
+    key_secret: `${process.env.KEY_SECRET}`,
   });
   try {
     const options = {
@@ -67,7 +67,7 @@ router.post("/verify", async (req, res) => {
     req.body;
     const sign = razorpay_order_id + "|" + razorpay_payment_id;
     const expectedSign = crypto
-    .createHmac("sha256", process.env.KEY_SECRET)
+    .createHmac("sha256", `${process.env.KEY_SECRET}`)
     .update(sign.toString())
     .digest("hex");
     if ( razorpay_signature === expectedSign) 
