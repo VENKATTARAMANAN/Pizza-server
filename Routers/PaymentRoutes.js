@@ -11,9 +11,7 @@ import {
 } from "../Controllers/PizzaControl.js";
 import { checkStock } from "../Common/checkStock.js";
 import { sendMail } from "../Common/mail.js";
-import * as dotenv from 'dotenv';
 
-dotenv.config();
 const router = express.Router();
 
 router.post("/cod", async (req, res) => {

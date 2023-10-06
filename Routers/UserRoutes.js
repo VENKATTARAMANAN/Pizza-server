@@ -17,6 +17,8 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
+
+
 const router = express.Router();
 
 router.post("/signup", async (req, res) => {
