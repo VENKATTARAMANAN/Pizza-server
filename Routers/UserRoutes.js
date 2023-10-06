@@ -1,3 +1,4 @@
+import * as dotenv from 'dotenv';
 import express from "express";
 import {
   userSigUp,
@@ -13,11 +14,8 @@ import {
 import bcrypt from "bcrypt";
 import Randomstring from "randomstring";
 import nodemailer from "nodemailer"
-import * as dotenv from 'dotenv';
 
 dotenv.config();
-
-
 
 const router = express.Router();
 
@@ -28,7 +26,7 @@ router.post("/signup", async (req, res) => {
       const salt =await bcrypt.genSalt(10);
       const hashedPassword =await bcrypt.hash(req.body.password, salt);
       req.body.password = hashedPassword.toString();
-      const result = userSigUp(req.body);
+      const result =await userSigUp(req.body);
       return res.status(200).json({ result, data: "Data added successfully" });
     }
     res.status(400).json({ data: "Given user already exist" });
@@ -51,7 +49,7 @@ router.post("/signin", async (req, res) => {
     if (!validPassword) {
       return res.status(400).json({ data: "Invalid Password" });
     }
-    const token = generateJwtToken(user._id);
+    const token =await generateJwtToken(user._id);
     res.status(200).json({
       data: {
         message: "Successfully logged in",
@@ -72,13 +70,13 @@ try {
     length: 12,
     charset: 'alphabetic'
   });
-  const token=generateJwtToken(randstring);
+  const token=await generateJwtToken(randstring);
   let value={
     email:req.body.email,
     token:token,
     random_string:randstring
   }
- const setString=setStringDb(value)
+ const setString=await  setStringDb(value)
  var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
