@@ -1,3 +1,5 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
 import { ObjectId } from "mongodb";
 import { client } from "../db.js";
 import Jwt from "jsonwebtoken";
@@ -262,7 +264,7 @@ export function addNewPizzaData(value){
 }
 //Generate JWT token
 export function generateJwtToken(id) {
-  return Jwt.sign({ id }, process.env.SECRETKEY);
+  return Jwt.sign({ id },`${process.env.SECRETKEY}`);
 }
 
 export function decodeJwtToken(token) {

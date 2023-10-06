@@ -16,8 +16,6 @@ import bcrypt from "bcrypt";
 import Randomstring from "randomstring";
 import nodemailer from "nodemailer"
 
-
-
 const router = express.Router();
 
 router.post("/signup", async (req, res) => {
