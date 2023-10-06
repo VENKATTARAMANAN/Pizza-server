@@ -13,7 +13,6 @@ import {
 } from "../Controllers/PizzaControl.js";
 import crypto from "crypto";
 import Razorpay from "razorpay";
-// const Razorpay = require('razorpay')
 const router = express.Router();
 import { config } from "dotenv";
 config();

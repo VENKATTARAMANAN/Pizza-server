@@ -27,7 +27,7 @@ router.put("/addtocart", async (req, res) => {
         });
       }
     } else {
-      if (getpizzadata.stock > req.body.quantity) {
+      if (getpizzadata.stock >= req.body.quantity) {
         addToCartFunc(req, res);
       } else {
         res.status(400).json({
