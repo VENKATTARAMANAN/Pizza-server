@@ -1,7 +1,9 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
 import { MongoClient } from "mongodb";
 import obj from "mongodb"
 
-const MongoURL="mongodb+srv://venkat:venkat457@cluster0.gi4hbxg.mongodb.net/mern-pizza"
+const MongoURL=MONGO_CONNECT_URL;
 
 async function createConnection(){
     const client = new MongoClient(MongoURL)
