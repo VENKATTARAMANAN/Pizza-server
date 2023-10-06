@@ -1,4 +1,5 @@
 import * as dotenv from 'dotenv';
+dotenv.config();
 import express from "express";
 import {
   userSigUp,
@@ -15,7 +16,7 @@ import bcrypt from "bcrypt";
 import Randomstring from "randomstring";
 import nodemailer from "nodemailer"
 
-dotenv.config();
+
 
 const router = express.Router();
 
