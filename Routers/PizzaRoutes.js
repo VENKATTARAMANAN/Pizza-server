@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 import express from "express";
+import cors from 'cors'
 import {
   addAddressInOrders,
   addToCart,
@@ -16,6 +17,8 @@ import {
 import crypto from "crypto";
 import Razorpay from "razorpay";
 const router = express.Router();
+const app=express();
+app.use(cors({ origin: '*' }))
 
 router.get("/all", async (req, res) => {
   try {

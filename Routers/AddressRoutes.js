@@ -7,7 +7,8 @@ const router=express.Router();
 
 router.post("/addaddress",async(req,res)=>{
     try {
-        const getId =await decodeJwtToken(req.body.userid);
+       
+        const getId =decodeJwtToken(req.body.userid);
         req.body={...req.body,userid:getId.id}
         const addaddress=await addAddress(req.body)
         res.status(200).json({data:"address added successfully"})
@@ -19,7 +20,7 @@ router.post("/addaddress",async(req,res)=>{
 
 router.post("/getaddress",async(req,res)=>{
     try {
-        const getId =await decodeJwtToken(req.body.token);
+        const getId =decodeJwtToken(req.body.token);
         const getaddress=await getAddress(getId.id)
         res.status(200).json({
             data:getaddress
@@ -35,7 +36,7 @@ router.post("/getaddress",async(req,res)=>{
 router.post("/updateaddress",async(req,res)=>{
     try {
        
-        const getId =await decodeJwtToken(req.body.userid);
+        const getId =   decodeJwtToken(req.body.userid);
         req.body={...req.body,userid:getId.id}
         const changeaddress=await UpdateAddress(getId.id,req.body)
         if(changeaddress){
