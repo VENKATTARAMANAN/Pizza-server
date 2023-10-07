@@ -1,3 +1,5 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
 import express from "express"
 import { decodeJwtToken, getCodOrders, getOnlinePaidOrders } from "../Controllers/PizzaControl.js";
 
