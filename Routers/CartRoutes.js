@@ -118,12 +118,13 @@ router.put("/addqty", async (req, res) => {
 export const cartRouters = router;
 
 const addToCartFunc = async (req, res) => {
+  const getId =await decodeJwtToken(req.body.auth);
   const getsamepizza = await getSamePizzaId(
     req.body.pizzaid,
-    req.body.selectsize
+    req.body.selectsize,
+    getId.id
   );
   if (!getsamepizza) {
-    const getId =await decodeJwtToken(req.body.auth);
     const addUserId = { ...req.body, userID: getId.id };
     const cartData = await addToCart(addUserId);
   } else if (req.body.selectsize === "regular") {

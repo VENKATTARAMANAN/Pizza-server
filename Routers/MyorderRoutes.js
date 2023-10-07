@@ -10,15 +10,15 @@ router.post("/getmyorders",async(req,res)=>{
         const getId =await decodeJwtToken(req.body.token);
         const getCod=await getCodOrders(getId.id);
         const getOnlinePaidOrder=await getOnlinePaidOrders(getId.id)
-    if((getCod.length >0) ||( getOnlinePaidOrder.length>0)){
+    if((getCod.length > 0) ||( getOnlinePaidOrder.length>0)){
      res.status(200).json({data:{
         statuscode:200,
         cod:getCod,
         onlinepayment:getOnlinePaidOrder
      }})
     }else{
-        res.status(404).json({data:{
-            statuscode:404,
+        res.status(204).json({data:{
+            statuscode:204,
             datas:"No Orders Found",
         }})
     }

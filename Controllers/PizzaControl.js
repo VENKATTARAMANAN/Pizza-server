@@ -72,11 +72,11 @@ export function getCartQuantity(data) {
 
 //find pizza input same pizza means add the quantity or add the pizza in cart
 
-export function getSamePizzaId(data, size) {
+export function getSamePizzaId(data, size,id) {
   return client
     .db("mern-pizza")
     .collection("addtocart")
-    .findOne({ pizzaid: data, selectsize: size });
+    .findOne({ pizzaid: data, selectsize: size,userID:id});
 }
 
 export function updatePizzaQuantity(data, size, qty) {
