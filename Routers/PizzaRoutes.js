@@ -16,10 +16,6 @@ import {
 import crypto from "crypto";
 import Razorpay from "razorpay";
 const router = express.Router();
-import { config } from "dotenv";
-config();
-
-
 
 router.get("/all", async (req, res) => {
   try {
