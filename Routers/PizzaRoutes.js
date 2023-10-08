@@ -90,7 +90,7 @@ router.post("/verify", async (req, res) => {
       orderstatus:"pending"
     }
     const confirmOrder=addonlineorders(conforder);
-    const clrCart=clearCart(getId.id);
+    const clrCart=await clearCart(getId.id);
     let findPizza,values,updatePizzaStock;
 if(confirmOrder){
     value.map(async(val)=>(
