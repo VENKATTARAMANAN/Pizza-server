@@ -249,11 +249,11 @@ export function deletePizza(id) {
     .updateOne({_id: new ObjectId(id)},{$set:{deleteflag:true}});
 }
 
-export function editpizzadata(catgory,editeddata){
+export function editpizzadata(id,editeddata){
 return client
 .db("mern-pizza")
 .collection("pizza")
-.updateOne({category:catgory},{$set:editeddata})
+.updateOne({_id: new ObjectId(id)},{$set:editeddata})
 }
 
 export function addNewPizzaData(value){

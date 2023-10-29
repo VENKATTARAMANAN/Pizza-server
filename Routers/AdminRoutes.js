@@ -80,9 +80,9 @@ router.post("/updataorderstatus",isAuthenticated, async (req, res) => {
       case "cod":
         const getCod = await getCodStatus(req.body.id);
         if (getCod) {
-          const data = (await getCod.orderstep) + 1;
+          const data = (getCod.orderstep) + 1;
           let updateCod;
-          if (data === 4) {
+          if (data > 4) {
             updateCod = await updateCodStatus(
               req.body.id,
               data,
@@ -161,6 +161,7 @@ router.delete("/deletepizza/:id",isAuthenticated, async (req, res) => {
 router.get("/editpizza/:id",isAuthenticated, async (req, res) => {
   try {
     const val = await getPizzaDataById(req.params.id);
+
     if (val) {
       res.status(200).json({
         data: {
@@ -199,7 +200,7 @@ router.put("/updatestock",isAuthenticated, async (req, res) => {
 
 router.put("/editpizzadata",isAuthenticated, async (req, res) => {
   try {
-    const editedpizzadata = await editpizzadata(req.body.category, req.body);
+    const editedpizzadata = await editpizzadata(req.body[1],req.body[0]);
     if (editedpizzadata) {
       res.status(200).json({ data: "Pizza updated successfully" });
     } else {
