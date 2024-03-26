@@ -279,3 +279,12 @@ export function findPizzaByidInCart(id) {
     .collection("addtocart")
     .findOne({ pizzaid: id});
 }
+
+// export function getOnline() {
+//   return client
+//     .db("mern-pizza")
+//     .collection("payment-cod")
+//     .aggregate([{$match:{total:{$gte:200}}},{$limit: 2}]).toArray();
+// }
+
+// console.log(await getOnline())

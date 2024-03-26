@@ -1,8 +1,8 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 import express from "express"
-import { pizzaRouters } from "./Routers/PizzaRoutes.js";
 import cors from 'cors'
+import { pizzaRouters } from "./Routers/PizzaRoutes.js";
 import { userRouter } from "./Routers/UserRoutes.js";
 import { isAuthenticated } from "./Authentication/Auth.js";
 import { cartRouters } from "./Routers/CartRoutes.js";
